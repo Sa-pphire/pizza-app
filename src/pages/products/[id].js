@@ -61,7 +61,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async () => {
-	const data = [
+	const data = 
         {
             "id": 1,
             "title": "Burga Pizza",
@@ -72,9 +72,8 @@ export const getStaticProps = async () => {
             "reviews": 8,
             "category": "Chicken Lunch Pizza Burger",
             "tags": "Healthy Organic Chicken Sauce"
-        },
-    ]
-
+        }
+    
 	return {
 		props: {product: data}
 	}
