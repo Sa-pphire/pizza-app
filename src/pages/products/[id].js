@@ -2,8 +2,52 @@ import Image from 'next/image'
 import { useCart } from '@/context/cartContext'
 
 export const getStaticPaths = async () => {
-	const res = await fetch('http://localhost:8080/products')
-	const data = await res.json()
+	const data = [
+        {
+            "id": 1,
+            "title": "Burga Pizza",
+            "price": 20,
+            "rating": 5,
+            "description": "This is burga pizza",
+            "image": "/bxnbmb4etcl5i4vgre4s.jpg",
+            "reviews": 8,
+            "category": "Chicken Lunch Pizza Burger",
+            "tags": "Healthy Organic Chicken Sauce"
+        },
+        {
+            "id": 2,
+            "title": "Burga Pizza",
+            "price": 20,
+            "rating": 5,
+            "description": "This is burga pizza",
+            "image": "/bxnbmb4etcl5i4vgre4s.jpg",
+            "reviews": 8,
+            "category": "Chicken Lunch Pizza Burger",
+            "tags": "Healthy Organic Chicken Sauce"
+        },
+        {
+            "id": 3,
+            "title": "New Pizza",
+            "price": 10,
+            "rating": 3,
+            "description": "This is a new pizza",
+            "image": "/mjs3jgodaqehrtvcoutq.png",
+            "reviews": 8,
+            "category": "Chicken Lunch Pizza",
+            "tags": "Healthy Organic Chicken Sauce"
+        },
+        {
+            "id": 4,
+            "title": "Greek Pizza",
+            "price": 40,
+            "rating": 4,
+            "description": "This is a greek pizza",
+            "image": "/whkayb8vpzhlsczydg3j.png",
+            "reviews": 8,
+            "category": "Chicken Lunch Pizza",
+            "tags": "Healthy Organic Chicken Sauce"
+        }
+    ]
 	const paths = data.map(product => {
 		return {
 			params: {id: product.id.toString()}
@@ -17,9 +61,22 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async (context) => {
-	const id = context.params.id
-	const res = await fetch('http://localhost:8080/products/' + id)
-	const data = await res.json()
+	// const id = context.params.id
+	// const res = await fetch('http://localhost:8080/products/' + id)
+	// const data = await res.json()
+	const data = [
+        {
+            "id": 1,
+            "title": "Burga Pizza",
+            "price": 20,
+            "rating": 5,
+            "description": "This is burga pizza",
+            "image": "/bxnbmb4etcl5i4vgre4s.jpg",
+            "reviews": 8,
+            "category": "Chicken Lunch Pizza Burger",
+            "tags": "Healthy Organic Chicken Sauce"
+        },
+    ]
 
 	return {
 		props: {product: data}
