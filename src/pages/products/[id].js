@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useState } from 'react'
 import { useCart } from '@/context/cartContext'
 
 export const getStaticPaths = async () => {
@@ -81,6 +82,7 @@ export const getStaticProps = async () => {
 
 const ProductDetail = ({product}) => {
 	const { cart, addToCart } = useCart();
+    const [qtyCount, setQtyCount] = useState(0);
     return (
 		<div className="container flex pt-10 my-20 mx-2">
             <div className="product-image">
@@ -140,10 +142,10 @@ const ProductDetail = ({product}) => {
 
 				<div className="add-cart-box flex justify-between mt-10">
 						<div className="number border border-solid border-slate-200 mr-5">
-							<input className='p-3' type="number"/>
+							<input className='p-3' type="number" value={qtyCount} onChange={(e) => setQtyCount(e.target.value)}/>
 						</div>
 						<div className="mr-5 p-2">
-							<button onClick={() => addToCart({id: product.id,image: product.image, title: product.title, price: product.price, quantity: 4, total: product.price * 4})} className="btn text-lg font-bold">Add To Cart</button>
+							<button onClick={() => addToCart({id: product.id,image: product.image, title: product.title, price: product.price, quantity: qtyCount, total: product.price * qtyCount})} className="btn text-lg font-bold">Add To Cart</button>
 						</div>
 						<div className="wish-list border border-solid rounded-full border-slate-200 p-3">
 							<a  className="wish-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
