@@ -56,13 +56,13 @@ const Cart = () => {
 
 												</div>
 											</td>
-											<td className="pr-14 py-2 text-sm">{product.price}</td>
+											<td className="pr-14 py-2 text-sm">${product.price}</td>
 											<td className="px-2 py-2 text-sm">
 												<div className="">
 													<input type="number" value="4"/>
 												</div>
 											</td>
-											<td className="pr-10 py-2 text-sm">$160</td>
+											<td className="pr-10 py-2 text-sm">${product.price * 4}</td>
 							    	</tr>
 									))}
 							    </tbody>
