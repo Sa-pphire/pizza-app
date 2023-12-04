@@ -1,7 +1,9 @@
+import Image from 'next/image'
+import Link from 'next/link';
 
 const Footer = () => {
     return ( 
-    <div className="flex justify-between bg-yellow overflow-hidden footer-box mx-10">
+    <div className="flex justify-between bg-yellow overflow-hidden footer-box">
         <div>
             <h2 className="footer-title">INFORMATION</h2>
             <ul className="footer-menu">
@@ -35,10 +37,10 @@ const Footer = () => {
         <div>
             <h2 className="footer-title">SOCIAL MEDIA</h2>
             <ul className="footer-social">
-							<li><a href="#" className="facebook"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
-							<li><a href="#" className="pinterest"><i className="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-							<li><a href="#" className="twitter"><i className="fa fa-twitter" aria-hidden="true"></i></a></li>
-							<li><a href="#" className="instagram"><i className="fa fa-instagram" aria-hidden="true"></i></a></li>
+							<li><Link href="#" className="facebook p-2"><Image src={'/facebook.png'} width={40} height={40} /></Link></li>
+							<li><Link href="#" className="pinterest"><Image src={'/pinterest.svg'} width={40} height={40} /></Link></li>
+							<li><Link href="#" className="twitter"><Image src={'/twitter.svg'} width={40} height={40} /></Link></li>
+							<li><Link href="#" className="instagram p-2"><Image  src={'/instagram.svg'} width={30} height={30} /></Link></li>
 						</ul>
 						<div className="footer-text">
 							<p>Signup and get exclusive offers and coupon <br/>codes</p>
