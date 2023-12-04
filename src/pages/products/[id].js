@@ -140,15 +140,15 @@ const ProductDetail = ({product}) => {
                         </div>
                 </div>
 
-				<div className="add-cart-box flex justify-between mt-10">
-						<div className="number border border-solid border-slate-200 mr-5">
+				<div className="add-cart-box flex gap-2 mt-10">
+						<div className="number border border-solid border-slate-200 mr-2 my-4">
 							<input className='p-3' type="number" value={qtyCount} onChange={(e) => setQtyCount(e.target.value)}/>
 						</div>
-						<div className="mr-5 p-2">
+						<div className="mr-2 p-2 mt-4">
 							<button onClick={() => addToCart({id: product.id,image: product.image, title: product.title, price: product.price, quantity: qtyCount, total: product.price * qtyCount})} className="btn text-lg font-bold">Add To Cart</button>
 						</div>
-						<div className="wish-list border border-solid rounded-full border-slate-200 p-3">
-							<a  className="wish-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+						<div className="wish-list border border-solid rounded-full border-slate-200 p-4 my-4">
+							<a  className="wish-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
 							<path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
 							</svg>
 							</a>
