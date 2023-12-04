@@ -143,7 +143,7 @@ const ProductDetail = ({product}) => {
 							<input className='p-3' type="number"/>
 						</div>
 						<div className="mr-5 p-2">
-							<button onClick={() => addToCart(product)} className="btn text-lg font-bold">Add To Cart</button>
+							<button onClick={() => addToCart({id: product.id,image: product.image, title: product.title, price: product.price, quantity: 4, total: product.price * 4})} className="btn text-lg font-bold">Add To Cart</button>
 						</div>
 						<div className="wish-list border border-solid rounded-full border-slate-200 p-3">
 							<a  className="wish-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
