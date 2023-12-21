@@ -1,14 +1,28 @@
 import Image from "next/image";
 import { useState } from "react";
 import { useCart } from "@/context/cartContext";
+import { useRouter } from 'next/navigation';
 import Modal from "@/components/Modal";
 
 const Cart = () => {
-	const { cart, getTotalPrice } = useCart();
+	const { cart, getTotalPrice, clearCart } = useCart();
 	const [toggleBtn, setToggleBtn] = useState(false);
 	const [PODModalOpen, setPODModalOpen] = useState(false);
+	const [formData, setFormData] = useState({
+		name: '',
+		phoneNumber: '',
+		address: ''
+	  });
+	const router = useRouter()
 	const discount = 0
 	const total = getTotalPrice() - discount
+	const orderDetails = {
+		orderId: generateId(16),
+		subtotal: getTotalPrice(),
+		discount: discount,
+		total: total,
+		...formData
+	  };
 
 	const openModal = () => {
 		setPODModalOpen(true);
@@ -21,6 +35,33 @@ const Cart = () => {
 	const handleClick = () => {
 		setToggleBtn(!toggleBtn);
 	  };
+	const handleOrder = () => {
+		clearCart();
+		router.push({
+			pathname: '/order',
+			query: orderDetails,
+		  });
+
+	}
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setFormData({
+		  ...formData,
+		  [name]: value,
+		});
+	}
+	function generateId(length) {
+		const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		const charactersLength = characters.length;
+		let orderId = '';
+	  
+		for (let i = 0; i < length; i++) {
+		  const randomIndex = Math.floor(Math.random() * charactersLength);
+		  orderId += characters.charAt(randomIndex);
+		}
+	  
+		return orderId;
+	  }
 
     return ( 
 			<div className="mt-20 pt-20 mx-2">
@@ -119,19 +160,19 @@ const Cart = () => {
 										<div className="top-0">
 											<div className="flex flex-col my-2">
 												<label className="mt-2 text-sm">Full Name</label>
-												<input className="mt-2 p-1 w-full border border-solid border-zinc-500"/>
+												<input name="name" value={formData.name} onChange={handleInputChange} className="mt-2 p-1 w-full border border-solid border-zinc-500"/>
 											</div>
 											<div className="flex flex-col my-2">
 												<label className="mt-2 text-sm">Phone Number</label>
-												<input className="mt-2 p-1 w-full border border-solid border-zinc-500"/>
+												<input name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} className="mt-2 p-1 w-full border border-solid border-zinc-500"/>
 											</div>
 											<div className="flex flex-col my-2">
 												<label className="mt-2 text-sm">Address</label>
-												<textarea className="mt-2 pt-1 pl-1 pb-10 w-full border border-solid border-zinc-500"/>
+												<textarea name="address" value={formData.address} onChange={handleInputChange} className="mt-2 pt-1 pl-1 pb-10 w-full border border-solid border-zinc-500"/>
 											</div>
 										</div>
 										<div className="text-center mt-2">
-											<button className="w-24 px-2 py-1 bg-amber-500 border-2 border-solid border-black rounded-md">Order</button>
+											<button onClick={handleOrder} className="w-24 px-2 py-1 bg-amber-500 border-2 border-solid border-black rounded-md">Order</button>
 										</div>
 									</form>
 								</div>
